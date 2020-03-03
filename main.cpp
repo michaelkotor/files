@@ -27,8 +27,10 @@ int main()
     char* infoFile = "info.txt";
     FILE *info = fopen(infoFile, "r");
     Set **array = parse(readContentFile(info), &number);
-    FILE* content = fopen("content.txt", "r");
-    char* bigContent = readContentFile2(content);
+    fclose(info);
+    FILE *content = fopen("content.txt", "r");
+    char *bigContent = readContentFile2(content);
+    fclose(content);
     changeContentFile(array, bigContent, number);
     return 0;
 }
@@ -65,6 +67,7 @@ void changeContentFile(Set **array, char *content, int number)
             putc(checkSymbol, resultFile);
         }
     }
+    fclose(resultFile);
 }
 
 int findChar(char* whereToFind, char toFind, int fromIndex)
