@@ -142,6 +142,9 @@ char* readContentFile(FILE *file)
         temp = fgetc(file);
     }
     putChar(&myString, '\0', counter);
+    printf("-------------------Start of Content of file:-------------\n");
+    printf("%s\n",myString);
+    printf("-------------------End Content of file:------------------\n\n\n");
     return myString;
 }
 
@@ -156,6 +159,9 @@ char* readContentFile2(FILE *file)
         temp = fgetc(file);
     }
     putChar2(&myString, '\0', counter);
+    printf("-------------------Start of Content of file:-------------\n");
+    printf("%s\n",myString);
+    printf("-------------------End Content of file:------------------\n\n\n");
     return myString;
 }
 
