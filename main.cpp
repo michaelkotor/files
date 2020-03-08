@@ -20,6 +20,7 @@ int findCharWithException(char* whereToFind, char toFind, int fromIndex);
 void changeContentFile(Set ** array, char *content, int number);
 char* findWordToWrite(Set** array, char* toFind, int number, int size);
 int checkTwoStr(char* str1, char* str2, int size);
+void closeMyFile(FILE *file);
 
 int main() 
 {
@@ -27,10 +28,10 @@ int main()
     char* infoFile = "info.txt";
     FILE *info = fopen(infoFile, "r");
     Set **array = parse(readContentFile(info), &number);
-    fclose(info);
+    closeMyFile(info);
     FILE *content = fopen("content.txt", "r");
     char *bigContent = readContentFile2(content);
-    fclose(content);
+    closeMyFile(content);
     changeContentFile(array, bigContent, number);
     return 0;
 }
@@ -217,4 +218,12 @@ int checkTwoStr(char* str1, char* str2, int size)
         }
     }
     return 0;
+}
+
+void closeMyFile(FILE *file)
+{
+    if(file == NULL)
+    {
+        fclose(file);
+    }
 }
